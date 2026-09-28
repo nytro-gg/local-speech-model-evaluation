@@ -31,9 +31,26 @@ The experiments focused on Parakeet and Faster-Whisper, with particular attentio
 * Processing limitations
 * Local hardware vs. server-based inference
 
+## Key Findings
+
+- Local ML deployment can have substantially higher runtime memory requirements than the model size alone suggests.
+- One Parakeet experiment attempted to allocate approximately 22.8 GB of CPU buffer memory during audio processing.
+- Faster-Whisper successfully processed a 3466.26-second recording in 26.64 seconds using CPU INT8 inference.
+- Automatic language detection successfully identified English with a reported probability of 1.00.
+- Long-form speech processing introduces additional considerations around memory, input handling, and processing strategy.
+
+## Project Documentation
+
+- [Technical Report](report/technical-report.md)
+- [Experiment Environment](report/experiment-environment.md)
+- [Experimental Results](results/results.md)
+- [Model Comparison](results/model-comparison.md)
+- [Experiment Log](experiments/experiment-log.md)
+- [Experimental Evidence](evidence/README.md)
+
 ## Status
 
-Experimental project — documentation and results are being compiled.
+Experimental evaluation completed; documentation and analysis are being refined.
 
 ## Experimental Evidence
 
