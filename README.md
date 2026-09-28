@@ -34,3 +34,19 @@ The experiments focused on Parakeet and Faster-Whisper, with particular attentio
 ## Status
 
 Experimental project — documentation and results are being compiled.
+
+## Experimental Evidence
+
+The project includes selected screenshots documenting the actual experiments and development process.
+
+### Faster-Whisper
+
+- [Successful transcription](evidence/01_faster_whisper_success.png)
+- [Automatic language detection](evidence/02_language_detection_en.png)
+- [Python implementation](evidence/03_transcribe_py.png)
+
+### Parakeet
+
+- [Memory allocation failure](evidence/04_parakeet_memory_failure.png)
+- [Audio processing details](evidence/05_audio_processing_details.png)
+- [Parakeet CLI/model setup](evidence/06_parakeet_cli.png)
