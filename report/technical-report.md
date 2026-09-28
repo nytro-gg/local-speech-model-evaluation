@@ -40,7 +40,18 @@ The experiments were performed locally on consumer hardware using Windows, Pytho
 
 The Faster-Whisper implementation used CPU inference with INT8 computation.
 
-## 5. Observations
+## 5. Verified Experimental Results
+
+| Experiment | Configuration / Input | Result |
+|---|---|---|
+| Faster-Whisper | Medium model, CPU, INT8 | Successfully transcribed a 3466.26-second recording in 26.64 seconds |
+| Faster-Whisper | Small model | Detected English with language probability 1.00 |
+| Parakeet | CPU inference | Model loaded successfully, but audio processing failed when a 22,837,892,192-byte CPU buffer allocation was attempted |
+| Parakeet audio preparation | 57:01.13 recording | Converted to 16 kHz mono WAV before processing |
+
+These measurements are taken from the documented experiment runs and screenshots included in the evidence folder.
+
+## 6. Observations
 
 ### Memory Requirements
 
@@ -62,7 +73,7 @@ Faster-Whisper successfully processed recorded audio locally.
 
 The experiments also demonstrated automatic language detection. One test detected English with a reported probability of 1.00.
 
-## 6. Engineering Lessons
+## 7. Engineering Lessons
 
 The experiments showed that selecting an ML model for local deployment requires more than looking at its accuracy or model size.
 
@@ -70,7 +81,7 @@ Hardware requirements, memory usage, input handling, inference configuration, an
 
 A model that performs well on server infrastructure may behave very differently on a consumer computer with limited memory and compute resources.
 
-## 7. Conclusion
+## 8. Conclusion
 
 The main conclusion from the experiments is that local ML deployment involves significant engineering trade-offs.
 
@@ -78,7 +89,7 @@ Powerful models can require substantial memory and computational resources. When
 
 The experience emphasized the importance of researching a model's deployment requirements before attempting to host it locally.
 
-## 8. Future Work
+## 9. Future Work
 
 Future experiments could compare additional speech-to-text models under the same hardware conditions and measure:
 
