@@ -6,7 +6,7 @@ An experimental study of locally hosted speech-to-text models on consumer hardwa
 
 This project explores the practical challenges of running modern speech recognition models locally rather than relying entirely on cloud-based inference.
 
-The experiments focused on Parakeet and Faster-Whisper, with particular attention to memory requirements, audio processing, model limitations, and the trade-offs involved in local deployment.
+The experiments focus on Parakeet and Faster-Whisper, with particular attention to memory requirements, audio processing, model limitations, long-form recordings, and the trade-offs involved in local deployment.
 
 ## Objectives
 
@@ -15,11 +15,12 @@ The experiments focused on Parakeet and Faster-Whisper, with particular attentio
 * Compare different approaches to processing recorded audio
 * Identify practical limitations when deploying models locally
 * Document failures, successful experiments, and lessons learned
+* Keep a reproducible chronological lab notebook
 
 ## Models Explored
 
 * Parakeet
-* Faster-Whisper
+* Faster-Whisper (Small and Medium evaluation in progress)
 
 ## Key Areas Investigated
 
@@ -27,17 +28,28 @@ The experiments focused on Parakeet and Faster-Whisper, with particular attentio
 * Local model inference
 * Audio chunking
 * Voice Activity Detection (VAD)
-* Transcription behaviour
+* Transcription behaviour and repetition
+* Long-form audio processing
 * Processing limitations
 * Local hardware vs. server-based inference
 
-## Key Findings
+## Current Research Snapshot — 13 November 2026
+
+A 731.74-second noisy M4A recording was used for a new Faster-Whisper Small baseline on CPU INT8.
+
+- Small with automatic language detection and VAD off completed transcription in 145.80 seconds (RTF 0.19925).
+- The user judged the first transcript subjectively very good compared with other tools previously tried. This is a qualitative observation, not a WER/CER score.
+- A forced-English repeat took 138.58 seconds and did not visibly resolve repeated phrases near the end.
+- The default whole-file VAD run retained only about 3.84 seconds of the input. VAD is under investigation and should not be used for this recording until the detection and duration-accounting problems are resolved.
+- Medium model weights downloaded and model loading started; its completed benchmark is pending.
+
+See the [experimental results](results/results.md) for the concise summary and the [experiment log](experiments/experiment-log.md) for detailed setup errors, commands, metrics, VAD diagnostics, decisions, and cleanup policy.
+
+## Earlier Findings
 
 - Local ML deployment can have substantially higher runtime memory requirements than the model size alone suggests.
 - One Parakeet experiment attempted to allocate approximately 22.8 GB of CPU buffer memory during audio processing.
-- Faster-Whisper successfully processed a 3466.26-second recording in 26.64 seconds using CPU INT8 inference.
-- Automatic language detection successfully identified English with a reported probability of 1.00.
-- Long-form speech processing introduces additional considerations around memory, input handling, and processing strategy.
+- An earlier Faster-Whisper experiment processed 3,466.26 seconds of audio in 26.64 seconds using CPU INT8 inference. This is a separate historical run, not the November 2026 12-minute benchmark.
 
 ## Project Documentation
 
@@ -45,16 +57,20 @@ The experiments focused on Parakeet and Faster-Whisper, with particular attentio
 - [Experiment Environment](report/experiment-environment.md)
 - [Experimental Results](results/results.md)
 - [Model Comparison](results/model-comparison.md)
-- [Experiment Log](experiments/experiment-log.md)
+- [Chronological Experiment Log / Lab Notebook](experiments/experiment-log.md)
 - [Experimental Evidence](evidence/README.md)
+
+## Repository Hygiene
+
+The repository intentionally excludes private/local audio, transcripts, temporary audio excerpts, downloaded model weights, virtual environments, caches, and generated per-run result folders. The local cleanup plan retains system-wide Git and Python installations for other coursework and development.
 
 ## Status
 
-Experimental evaluation completed; documentation and analysis are being refined.
+Research and evaluation are ongoing. Results are preliminary; formal WER/CER comparisons require manually verified reference transcripts.
 
 ## Experimental Evidence
 
-The project includes selected screenshots documenting the actual experiments and development process.
+The project includes selected screenshots documenting earlier experiments and the development process.
 
 ### Faster-Whisper
 
