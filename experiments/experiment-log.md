@@ -232,3 +232,23 @@ Remove only this research project's temporary/local assets after the final bench
 Do not delete Git, Python, VS Code, or unrelated development environments. Before removing anything, verify the GitHub commit and make sure no required source code or documentation exists only in the local project folder.
 
 The local project directory itself can be deleted once its public repository contents are verified and the final cleanup checklist has been completed.
+
+
+## Experiment 4 — Faster-Whisper Medium, automatic language, VAD off — run completed, metrics pending
+
+**Run date:** 2026-11-13  
+**Result folder name:** test12_medium_20261113_165725_692132  
+**Model:** Systran/faster-whisper-medium  
+**Resolved model commit:** 08e178d48790749d25932bbc082711ddcfdfbc4f  
+**Configuration:** CPU, requested INT8, automatic language detection, VAD off, maximum audio duration 900 seconds.  
+**Input:** Same original 731.74-second M4A recording used for the Small experiments; no audio modification.
+
+The Medium model download completed successfully. The model file was approximately 1.53 GB. The evaluator subsequently printed its completion message and created the result directory.
+
+The console also emitted two non-fatal Hugging Face warnings:
+- hf_xet was not installed, so the regular HTTP download path was used.
+- Windows symlink support was unavailable, so Hugging Face used its less space-efficient cache fallback.
+
+**Status:** The inference run completed and result directory was created. Its metadata.json and transcript.txt have not yet been inspected in this log. No Medium timing, memory, CPU, segment-count, or qualitative transcript conclusion is claimed until those files are reviewed.
+
+**Next action:** Inspect the result directory contents, metadata.json, and transcript.txt. Compare Medium against Small using the same input and VAD-off/automatic-language configuration. Record subjective differences separately from formal WER/CER; no reference transcript has been provided.
