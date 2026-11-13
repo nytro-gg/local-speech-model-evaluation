@@ -120,11 +120,3 @@ Model performance alone does not determine whether a model is practical for loca
 
 See [the chronological experiment log](../experiments/experiment-log.md) for setup failures, error resolutions, detailed VAD diagnostics, environment details, and cleanup policy.
 
-
-## Faster-Whisper Medium — run completed, metrics pending
-
-A Medium-model evaluation was completed on 13 November 2026 using the same 731.74-second M4A input as the Small runs. Configuration: CPU INT8, automatic language detection, VAD off, 900-second maximum. Model: Systran/faster-whisper-medium, resolved commit 08e178d48790749d25932bbc082711ddcfdfbc4f. The 1.53 GB model download completed, and the evaluator created result directory test12_medium_20261113_165725_692132.
-
-The console emitted non-fatal Hugging Face warnings: hf_xet was unavailable (regular HTTP fallback used) and Windows symlink support was unavailable (less space-efficient cache fallback used).
-
-The Medium run's metadata and transcript have not yet been inspected, so no performance or quality result is claimed. See the chronological experiment log for details and next steps.
