@@ -41,7 +41,7 @@ A 731.74-second noisy M4A recording was used for a new Faster-Whisper Small base
 - The user judged the first transcript subjectively very good compared with other tools previously tried. This is a qualitative observation, not a WER/CER score.
 - A forced-English repeat took 138.58 seconds and did not visibly resolve repeated phrases near the end.
 - The default whole-file VAD run retained only about 3.84 seconds of the input. VAD is under investigation and should not be used for this recording until the detection and duration-accounting problems are resolved.
-- Faster-Whisper Medium completed its first 12-minute CPU INT8 run with VAD off; metadata and transcript review is pending.
+- Faster-Whisper Medium completed the same 12-minute CPU INT8 run in 302.09 seconds (RTF 0.41283; peak sampled process RSS 2,644 MiB). Compared with Small, it was slower and used more RAM; accuracy superiority has not been established because no human-verified reference transcript is available.
 
 See the [experimental results](results/results.md) for the concise summary and the [experiment log](experiments/experiment-log.md) for detailed setup errors, commands, metrics, VAD diagnostics, decisions, and cleanup policy.
 
