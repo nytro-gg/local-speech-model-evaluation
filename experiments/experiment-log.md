@@ -209,12 +209,6 @@ The recording was analysed in independent windows of different lengths. No trans
 8. Repetition-loop controls (for example, making condition_on_previous_text configurable) should be evaluated separately, with careful comparisons and reference transcripts.
 9. A human-verified transcript is needed before reporting WER/CER or making formal accuracy claims.
 
-## Pending experiment — Faster-Whisper Medium
-
-A Medium model download completed successfully: Systran/faster-whisper-medium, resolved commit 08e178d48790749d25932bbc082711ddcfdfbc4f, model file approximately 1.53 GB. The terminal then reported that the model was loading on CPU INT8. The completion output and benchmark metadata have not yet been recorded in this log.
-
-Do not infer a successful transcription or performance result until the run completes and its output is inspected.
-
 ## Cleanup policy — after research is finished
 
 Keep system-wide tools needed for coursework and other development:
