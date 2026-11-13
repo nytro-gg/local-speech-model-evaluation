@@ -75,9 +75,40 @@ These findings show that VAD retention depends strongly on processing-window len
 
 **Current VAD conclusion:** Do not use the present default VAD configuration for this recording. Investigate VAD windowing, state handling, and retained-duration reporting before recommending VAD for long-form recordings.
 
-## Faster-Whisper Medium — pending
+## Faster-Whisper Medium — same 12-minute recording
 
-The 1.53 GB Medium model download completed and the process began loading the model on CPU INT8. The completed transcription output and metadata have not yet been captured. No Medium performance or quality result is claimed here.
+Configuration: CPU INT8, automatic language detection, VAD off. Model revision: 08e178d48790749d25932bbc082711ddcfdfbc4f.
+
+| Metric | Medium result |
+|---|---:|
+| Transcription time | 302.09 s |
+| Real-time factor | 0.41283 |
+| Peak sampled process RSS | 2,644.46 MiB |
+| Average sampled process CPU | 385.76% |
+| Segments | 147 |
+| Language detected | English |
+| Language probability | 0.35788 |
+| Model download/cache | 66.48 s |
+| Model loading | 3.52 s |
+
+The Medium transcript contains recognizable lecture-specific concepts in inspected sections, including traffic flow, checkpoints, variables, eigenvalues, and eigenvectors. Its opening also contains isolated dots and fragmented phrases. The user has not yet provided a human-verified reference transcript, so WER/CER are unavailable and no formal accuracy winner is declared.
+
+### Small vs Medium
+
+| Metric | Small | Medium |
+|---|---:|---:|
+| Transcription time | 145.80 s | 302.09 s |
+| Real-time factor | 0.19925 | 0.41283 |
+| Peak sampled process RSS | 1,064.01 MiB | 2,644.46 MiB |
+| Average sampled process CPU | 358.43% | 385.76% |
+| Segments | 63 | 147 |
+| Language probability | 0.29498 | 0.35788 |
+
+Both runs used the same 731.74-second source recording, CPU INT8, automatic language detection, beam size 5, and VAD off. Medium took approximately 2.07 times as long and used approximately 2.49 times the peak sampled process RSS. Small is the faster and more memory-efficient option. Both were faster than real time: about 5.02x for Small and 2.42x for Medium.
+
+The user previously judged the Small baseline subjectively very good compared with other transcription tools. Medium has promising qualitative wording in some inspected sections, but its accuracy advantage remains unproven without an aligned, human-verified reference transcript.
+
+
 
 ## Accuracy measurement limitation
 
