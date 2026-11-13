@@ -9,7 +9,7 @@ This file separates completed experiments from pending tests. Runs must use the 
 | Faster-Whisper Small — 12-minute baseline | Completed | CPU INT8, VAD off, automatic language; 731.74 s audio transcribed in 145.80 s; RTF 0.19925; peak sampled process RSS 1,064 MiB | User judged transcript subjectively very good; no verified reference, so WER/CER are unavailable |
 | Faster-Whisper Small — forced English | Completed | CPU INT8, VAD off; 138.58 s transcription; 85 segments | Similar-looking output, including repeated phrases near the end; no verified accuracy score |
 | Faster-Whisper Small — default VAD | Completed, rejected as a valid benchmark | CPU INT8, VAD on; two segments, about 3.84 s retained from 731.74 s input | Nearly all audio discarded; reported RTF is misleading because it uses full input duration |
-| Faster-Whisper Medium — 12-minute comparison | Run completed; review pending | CPU INT8, automatic language, VAD off; model revision 08e178d48790749d25932bbc082711ddcfdfbc4f; result directory created | Metadata and transcript have not yet been inspected; no performance/quality conclusion yet |
+| Faster-Whisper Medium — 12-minute comparison | Completed; qualitative review preliminary | CPU INT8, automatic language, VAD off; 302.09 s transcription; RTF 0.41283; 2,644 MiB peak sampled RSS; 147 segments | No verified reference transcript; accuracy advantage over Small is not established |
 
 ## VAD diagnostic observations
 
@@ -32,3 +32,19 @@ These are detection/retention statistics only. They do not prove that the retain
 There is no single factor that determines whether a speech model is practical for local deployment. Model capability must be considered alongside memory requirements, processing method, input length, audio conditions, and available hardware.
 
 For the November 2026 Small baseline, the measured transcription speed is promising. Formal model-accuracy comparisons still require a manually verified reference transcript.
+
+
+## Small vs Medium — 13 November 2026
+
+Both runs used the same 731.74-second M4A recording, CPU INT8, automatic language detection, beam size 5, and VAD off.
+
+| Metric | Small | Medium |
+|---|---:|---:|
+| Transcription time | 145.80 s | 302.09 s |
+| RTF | 0.19925 | 0.41283 |
+| Peak sampled process RSS | 1,064 MiB | 2,644 MiB |
+| Average sampled process CPU | 358.43% | 385.76% |
+| Segments | 63 | 147 |
+| Language probability | 0.29498 | 0.35788 |
+
+Small is approximately 2.07 times faster and uses approximately 2.49 times less peak sampled process memory. Both are faster than real time. Medium's transcript contains some promising lecture-specific terms in the inspected output, but includes fragmented opening text. No verified reference transcript is available; do not rank accuracy from subjective impression alone.
