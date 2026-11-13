@@ -9,7 +9,7 @@ This file separates completed experiments from pending tests. Runs must use the 
 | Faster-Whisper Small — 12-minute baseline | Completed | CPU INT8, VAD off, automatic language; 731.74 s audio transcribed in 145.80 s; RTF 0.19925; peak sampled process RSS 1,064 MiB | User judged transcript subjectively very good; no verified reference, so WER/CER are unavailable |
 | Faster-Whisper Small — forced English | Completed | CPU INT8, VAD off; 138.58 s transcription; 85 segments | Similar-looking output, including repeated phrases near the end; no verified accuracy score |
 | Faster-Whisper Small — default VAD | Completed, rejected as a valid benchmark | CPU INT8, VAD on; two segments, about 3.84 s retained from 731.74 s input | Nearly all audio discarded; reported RTF is misleading because it uses full input duration |
-| Faster-Whisper Medium — 12-minute comparison | Pending | 1.53 GB model download completed; model load started on CPU INT8 | Completed transcript and metadata have not yet been reviewed |
+| Faster-Whisper Medium — 12-minute comparison | Run completed; review pending | CPU INT8, automatic language, VAD off; model revision 08e178d48790749d25932bbc082711ddcfdfbc4f; result directory created | Metadata and transcript have not yet been inspected; no performance/quality conclusion yet |
 
 ## VAD diagnostic observations
 
