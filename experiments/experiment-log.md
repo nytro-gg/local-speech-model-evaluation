@@ -252,3 +252,51 @@ The console also emitted two non-fatal Hugging Face warnings:
 **Status:** The inference run completed and result directory was created. Its metadata.json and transcript.txt have not yet been inspected in this log. No Medium timing, memory, CPU, segment-count, or qualitative transcript conclusion is claimed until those files are reviewed.
 
 **Next action:** Inspect the result directory contents, metadata.json, and transcript.txt. Compare Medium against Small using the same input and VAD-off/automatic-language configuration. Record subjective differences separately from formal WER/CER; no reference transcript has been provided.
+
+
+## Experiment 4 — Faster-Whisper Medium, automatic language, VAD off
+
+**Run timestamp:** 2026-11-13 16:57:25 UTC  
+**Result folder name:** test12_medium_20261113_165725_692132  
+**Model:** Systran/faster-whisper-medium  
+**Resolved model commit:** 08e178d48790749d25932bbc082711ddcfdfbc4f  
+**Configuration:** CPU, requested INT8, beam size 5, automatic language detection, VAD off, 900-second maximum duration.  
+**Input:** Same original 731.743-second M4A recording used for the Small experiments; original audio unchanged.
+
+| Metric | Result |
+|---|---:|
+| Model download/cache time | 66.484 s |
+| Model load time | 3.518 s |
+| Transcription time | 302.089 s |
+| Download + load + transcription | 372.092 s |
+| Real-time factor (transcription only) | 0.41283 |
+| Segments emitted | 147 |
+| Detected language | English |
+| Language probability | 0.35788 |
+| Requested compute type | INT8 |
+| Runtime-reported compute type | int8_float32 |
+| Peak sampled process RSS | 2,644.46 MiB |
+| Average sampled process CPU | 385.76% |
+| Peak sampled process CPU | 425% |
+| System RAM total | 23,960.07 MiB |
+
+**Console warnings:** Hugging Face reported that hf_xet was not installed and used regular HTTP download fallback. It also warned that Windows symlinks were unavailable; model caching continued with the less space-efficient fallback. The model download (approximately 1.53 GB) completed, and the evaluation run completed successfully.
+
+**Comparison with Small automatic-language baseline:** Both runs used the same 731.743-second source audio, CPU INT8, beam size 5, automatic language detection, and VAD off.
+
+| Metric | Small | Medium |
+|---|---:|---:|
+| Transcription time | 145.798 s | 302.089 s |
+| Real-time factor | 0.19925 | 0.41283 |
+| Peak sampled process RSS | 1,064.01 MiB | 2,644.46 MiB |
+| Average sampled process CPU | 358.43% | 385.76% |
+| Segment count | 63 | 147 |
+| Language probability | 0.29498 | 0.35788 |
+
+Medium took approximately 2.07 times as long and used approximately 2.49 times the peak sampled process RSS. Both remained faster than real time: approximately 2.42x for Medium versus 5.02x for Small. Download and model-load time are reported separately and should not be mixed with the transcription-only RTF.
+
+**Qualitative transcript inspection:** The inspected Medium transcript includes recognizable lecture concepts and phrases such as traffic flow, checkpoints, variables, eigenvalues and eigenvectors. The beginning also contains multiple isolated dots and fragmented phrases. This is a preliminary qualitative observation only; there is no verified reference transcript and no WER/CER score. The user previously judged the Small automatic-language transcript subjectively very good. Do not declare Medium the accuracy winner without a careful aligned listening comparison or human-verified reference.
+
+**Current conclusion:** Small is faster and more memory-efficient. Medium may offer useful differences in wording/detail, but its accuracy advantage is unproven. This is a compute-versus-output comparison, not a formal accuracy ranking.
+
+**Next action:** Ask the user to compare specific sections they know from the lecture, or prepare a short manually verified reference segment. Keep VAD off and keep the original recording unchanged for further model comparisons.
