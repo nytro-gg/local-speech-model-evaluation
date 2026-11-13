@@ -20,7 +20,7 @@ The experiments focus on Parakeet and Faster-Whisper, with particular attention 
 ## Models Explored
 
 * Parakeet
-* Faster-Whisper (Small and Medium evaluation in progress)
+* Faster-Whisper Small and Medium
 
 ## Key Areas Investigated
 
@@ -35,15 +35,32 @@ The experiments focus on Parakeet and Faster-Whisper, with particular attention 
 
 ## Current Research Snapshot — 13 November 2026
 
-A 731.74-second noisy M4A recording was used for a new Faster-Whisper Small baseline on CPU INT8.
+A 731.74-second M4A recording was used for matched Faster-Whisper Small and Medium CPU INT8 runs. Both used automatic language detection, beam size 5, and VAD off. The original audio was kept unchanged.
 
-- Small with automatic language detection and VAD off completed transcription in 145.80 seconds (RTF 0.19925).
-- The user judged the first transcript subjectively very good compared with other tools previously tried. This is a qualitative observation, not a WER/CER score.
-- A forced-English repeat took 138.58 seconds and did not visibly resolve repeated phrases near the end.
-- The default whole-file VAD run retained only about 3.84 seconds of the input. VAD is under investigation and should not be used for this recording until the detection and duration-accounting problems are resolved.
-- Faster-Whisper Medium completed the same 12-minute CPU INT8 run in 302.09 seconds (RTF 0.41283; peak sampled process RSS 2,644 MiB). Compared with Small, it was slower and used more RAM; accuracy superiority has not been established because no human-verified reference transcript is available.
+- Small completed transcription in 145.80 seconds (RTF 0.19925; peak sampled process RSS 1,064 MiB; 63 segments).
+- Medium completed transcription in 302.09 seconds (RTF 0.41283; peak sampled process RSS 2,644 MiB; 147 segments).
+- Small was approximately 2.07 times faster and used approximately 2.49 times less peak sampled process memory.
+- The user judged the first Small transcript subjectively very good compared with other tools previously tried. Medium contains some promising lecture-specific wording, but no formal accuracy winner can be declared.
+- No human-verified reference transcript was provided, so WER/CER are unavailable.
+- A separate default whole-file VAD run retained only about 3.84 seconds of the input. VAD is not recommended for this recording with the current settings.
 
-See the [experimental results](results/results.md) for the concise summary and the [experiment log](experiments/experiment-log.md) for detailed setup errors, commands, metrics, VAD diagnostics, decisions, and cleanup policy.
+These are single-run results, with sampled resource measurements; they are not repeated-run medians or broad model-accuracy claims.
+
+See the [experimental results](results/results.md) for the concise summary and the [experiment log](experiments/experiment-log.md) for setup errors, commands, metrics, VAD diagnostics, decisions, and cleanup policy.
+
+## Runnable Source Package
+
+The repository now includes the CPU-first Faster-Whisper evaluation harness, PowerShell setup and runner scripts, pinned direct dependencies, and automated tests.
+
+- [Package quickstart and usage](docs/package-quickstart.md)
+- [Model verification notes](MODEL_NOTES.md)
+- [Test protocol](TEST_PROTOCOL.md)
+- [Verification report](VERIFICATION_REPORT.md)
+- [Changelog](CHANGELOG.md)
+- [Python evaluator](src/evaluate.py)
+- [Automated tests](tests/test_evaluate.py)
+
+The first smoke test intentionally defaults to a maximum audio duration of 120 seconds. Longer recordings require an explicit `--max-audio-seconds` override.
 
 ## Earlier Findings
 
@@ -66,7 +83,7 @@ The repository intentionally excludes private/local audio, transcripts, temporar
 
 ## Status
 
-Research and evaluation are ongoing. Results are preliminary; formal WER/CER comparisons require manually verified reference transcripts.
+The Small and Medium CPU benchmark runs are complete for the current 12-minute sample. Research remains preliminary: formal WER/CER comparisons require manually verified reference transcripts, and broader robustness testing would require a properly consented and labelled test set.
 
 ## Experimental Evidence
 

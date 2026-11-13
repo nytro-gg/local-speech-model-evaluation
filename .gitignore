@@ -9,13 +9,15 @@ __pycache__/
 *.py[cod]
 
 # Downloaded models and Hugging Face caches
-models/
+models/*
+!models/README.md
 .cache/
 .cache-huggingface/
 huggingface-cache/
 
 # Private/local audio and transcripts
-audio/
+audio/*
+!audio/README.md
 *.wav
 *.wave
 *.mp3
@@ -24,6 +26,7 @@ audio/
 *.ogg
 *.aac
 *.opus
+*.txt.tmp
 
 # Generated per-run benchmark artifacts (keep curated Markdown summaries)
 results/*
