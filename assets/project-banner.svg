@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="300" viewBox="0 0 1440 300" role="img" aria-labelledby="title desc">
+<title id="title">Local Speech Recognition Benchmark</title>
+<desc id="desc">Dark navy project banner with a microphone and audio waveform, describing local Faster-Whisper and Parakeet experiments on consumer hardware.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#081322"/><stop offset=".55" stop-color="#111b35"/><stop offset="1" stop-color="#17122c"/></linearGradient>
+  <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#20d5c0"/><stop offset=".55" stop-color="#49a7ff"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+  <radialGradient id="glow"><stop offset="0" stop-color="#1d70a8" stop-opacity=".32"/><stop offset="1" stop-color="#1d70a8" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1440" height="300" rx="22" fill="url(#bg)"/>
+<ellipse cx="1120" cy="150" rx="420" ry="220" fill="url(#glow)"/>
+<g fill="none" stroke="url(#wave)" stroke-width="3" opacity=".72">
+  <path d="M0 178 C100 178 100 100 200 100 S300 250 400 178 S500 90 600 150 S700 232 800 160 S900 80 1000 150 S1100 230 1200 160 S1320 105 1440 150"/>
+  <path d="M0 195 C100 195 120 130 210 130 S310 220 410 190 S510 115 610 165 S710 210 810 175 S910 110 1010 165 S1110 210 1210 175 S1330 125 1440 165" opacity=".4"/>
+  <path d="M0 160 C100 160 110 75 210 75 S310 260 410 160 S510 70 610 135 S710 250 810 145 S910 60 1010 135 S1110 250 1210 145 S1330 80 1440 135" opacity=".28"/>
+</g>
+<g transform="translate(110 82)" fill="none" stroke="#67e8f9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="0" y="0" width="92" height="128" rx="46"/>
+  <path d="M-23 70 V82 A69 69 0 0 0 115 82 V70 M46 151 V176 M14 176 H78"/>
+</g>
+<g fill="#e5eefc" font-family="Inter,Segoe UI,Arial,sans-serif">
+  <text x="280" y="112" font-size="48" font-weight="750">Local Speech Recognition Benchmark</text>
+  <text x="284" y="164" font-size="27" fill="#b8c8e8">Faster-Whisper &amp; Parakeet on Consumer Hardware</text>
+  <text x="284" y="210" font-size="19" fill="#94a9c8">Local inference · installation challenges · performance &amp; memory analysis</text>
+</g>
+<g transform="translate(1100 84)" fill="none" stroke="url(#wave)" stroke-width="5" stroke-linecap="round">
+  <path d="M0 60 V100 M18 38 V122 M36 15 V145 M54 42 V118 M72 0 V160 M90 32 V128 M108 53 V107 M126 24 V136 M144 47 V113 M162 8 V152 M180 42 V118 M198 60 V100"/>
+</g>
+<g transform="translate(1105 230)">
+  <rect width="235" height="34" rx="17" fill="#152642" stroke="#37527a"/>
+  <text x="117.5" y="23" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" fill="#c8d8f2">CPU · INT8 · Offline inference</text>
+</g>
+</svg>
